@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="demo">
+       
+    </button>
+    <script>
+    
+
+fetch('https://webapi.developers.erstegroup.com/api/csas/public/sandbox/v3/transparentAccounts/2000709369',{
+	method: 'GET',
+    headers: {
+            "Content-Type": "text/plain",
+            'WEB-API-key' : API_KEY
+        },
+	
+}).then(function (response) {
+
+	// The API call was successful!
+	if (response.ok) {
+		return response.json();
+	}
+
+	// There was an error
+	return Promise.reject(response);
+
+}).then(function (data) {
+	// This is the JSON from our response
+
+    document.getElementById('demo').textContent = data.balance + " Kč";
+    
+})
+   </script>
+
+   
+</body>
+</html>
